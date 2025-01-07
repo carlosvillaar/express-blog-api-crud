@@ -2,7 +2,11 @@ const posts = require('../immagini_e_post/posts');
 
 //index route
 const index = (req, res) => {
-  res.json(posts)
+  let postsList = posts;
+  if (req.query.tags){
+    postsList = posts.filter(post => post.tags.includes(req.query.tags))
+  }
+  res.json(postsList)
 };
 
 //show route
