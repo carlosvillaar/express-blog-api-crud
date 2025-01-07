@@ -7,7 +7,16 @@ const index = (req, res) => {
 
 //show route
 const show = (req, res) => {
-  res.json(posts.find(post => post.id == req.params.id)) 
+  const post = posts.find(post => post.id == req.params.id);
+  if (!post) {
+    res.status(404);
+    return res.json({
+      message: "post not found",
+      status: 404,
+      error: "not found"
+    })
+  }
+  res.json(post)
 };
 
 //destroy route
