@@ -2,12 +2,12 @@ const posts = require('../immagini_e_post/posts');
 
 //index route
 const index = (req, res) => {
-  res.send('elenco dei posts')
+  res.json(posts)
 };
 
 //show route
 const show = (req, res) => {
-  res.send("visualizzo un post in base all'id" + req.params.id) 
+  res.json(posts.find(post => post.id == req.params.id)) 
 };
 
 //destroy route
