@@ -21,7 +21,19 @@ const show = (req, res) => {
 
 //destroy route
 const destroy = (req, res) => {
-  res.send("elimino un post in base all'id" + req.params.id) 
+  const post = posts.find(partecipante => partecipante.id == req.params.id);
+  if (!post) {
+    res.status(404)
+    return res.json ({
+      message: 'post not found',
+      status: 404,
+      error: "not found"
+    })
+  }
+  posts.splice(posts.indexOf(post), 1);
+  console.log(posts);
+  
+  res.sendStatus(204);
 };
 
 module.exports = {
