@@ -23,6 +23,27 @@ const show = (req, res) => {
   res.json(post)
 };
 
+//store route
+const store = (req, res) => {
+  const id = posts.at(-1).id + 1;
+  const newPost = {
+    id,
+    ...req.body
+  };
+  posts.push(newPost);
+  res.json(posts);
+};
+
+//update route
+const update = (req, res) => {
+
+};
+
+//modify route
+const modify = (req, res) => {
+
+};
+
 //destroy route
 const destroy = (req, res) => {
   const post = posts.find(partecipante => partecipante.id == req.params.id);
@@ -43,5 +64,8 @@ const destroy = (req, res) => {
 module.exports = {
   index, 
   show,
+  store,
+  update,
+  modify,
   destroy
 }

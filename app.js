@@ -8,6 +8,9 @@ const app = express();
 
 const port = 3000;
 
+//body parser
+app.use(express.json());
+
 app.get('/', (req, res) => {
   res.send('Server dei posts')
 });
