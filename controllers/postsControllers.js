@@ -36,12 +36,23 @@ const store = (req, res) => {
 
 //update route
 const update = (req, res) => {
+  const id = req.params.id;
+  const post = posts.find(post => post.id == id);
+  if (!post){
+    res.status(404);
+    return res.json({
+      message: "post not found",
+      status: 404,
+      error: "not found"
+    })
+  };
+  //aggiorno le proprieta del post
+  post.title = req.body.title;
+  post.content = req.body.content;
+  post.image = req.body.image;
+  post.tags = req.body.tags;
 
-};
-
-//modify route
-const modify = (req, res) => {
-
+res.json(post);
 };
 
 //destroy route
@@ -66,6 +77,5 @@ module.exports = {
   show,
   store,
   update,
-  modify,
   destroy
 }
