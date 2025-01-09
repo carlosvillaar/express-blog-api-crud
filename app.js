@@ -8,6 +8,8 @@ const app = express();
 
 const port = 3000;
 
+const notFound = require('./middlewares/notFound');
+
 //body parser
 app.use(express.json());
 
@@ -16,6 +18,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/posts', router);
+
+app.use(notFound);
 
 app.listen(port, () => {
   console.log('sono in ascolto alla porta 3000')
