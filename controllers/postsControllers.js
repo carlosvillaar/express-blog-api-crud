@@ -2,6 +2,7 @@ const posts = require('../immagini_e_post/posts');
 
 //index route
 const index = (req, res) => {
+  //custom error: throw new Error('custom error')
   let postsList = posts;
   if (req.query.tags){
     postsList = posts.filter(post => post.tags.includes(req.query.tags))
